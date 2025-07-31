@@ -82,3 +82,11 @@ footer {
     padding-top: 20px;
     border-top: 1px solid #ccc;
 }
+
+.iframe-wrapper {
+    transform: scale(0.5);         /* scale down by half */
+    transform-origin: top left;    /* anchor scaling to top-left corner */
+    width: 2400px;                 /* double the iframe width (1200 * 2) */
+    height: 1800px;                /* double the iframe height (900 * 2) */
+    overflow: hidden;              /* hide overflow caused by scaling */
+}
