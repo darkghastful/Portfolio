@@ -67,13 +67,46 @@ a:hover {
 }
 
 .project {
+    margin-bottom: 20px;
+}
+
+.iframe-outer-wrapper {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.iframe-border-wrapper {
     background-color: white;
     border: 1px solid var(--primary);
     border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* padding: 20px; */
+    display: inline-block;
+
+    transform-origin: top left;
+    overflow: hidden;
+
+    /* Set width/height to scaled iframe size plus padding */
+    width: calc(1250px * 0.6); /* iframe width scaled + padding left+right */
+    height: calc(1100px * 0.6); /* iframe height scaled + padding top+bottom */
+
+    /* Apply scale to iframe, not wrapper */
+    transform: none;
 }
+
+.iframe-border-wrapper iframe {
+    width: 1250px;
+    height: 1100px;
+    border: none;
+    border-radius: 8px;
+
+    /* Scale iframe down */
+    transform: scale(0.6);
+    transform-origin: top left;
+    display: block;
+}
+
 
 footer {
     text-align: center;
@@ -83,19 +116,4 @@ footer {
     border-top: 1px solid #ccc;
 }
 
-.iframe-border-wrapper {
-    border: 1px solid #ccc;       /* Border only around iframe */
-    border-radius: 8px;
-    padding: 20px;                /* Padding OUTSIDE the iframe */
-    display: inline-block;        /* shrink-wrap to iframe */
-    margin: 30px 0;               /* spacing outside border */
-    
-    /* Scale down the iframe */
-    transform: scale(0.2);
-    transform-origin: top left;
 
-    /* Adjust width and height for the scaling */
-    width: 6000px;   /* 1200 / 0.2 */
-    height: 6000px;  /* 1200 / 0.2 */
-    overflow: hidden;
-}
