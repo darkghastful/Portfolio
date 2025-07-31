@@ -84,9 +84,9 @@ footer {
 }
 
 .iframe-wrapper {
-    transform: scale(0.35);
+    transform: scale(0.2);
     transform-origin: top left;
-    width: 3430px; 
-    height: 2570px; 
+    width: 6000px;
+    height: 4500px;
     overflow: hidden;
 }
