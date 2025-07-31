@@ -83,11 +83,19 @@ footer {
     border-top: 1px solid #ccc;
 }
 
-.iframe-wrapper {
+.iframe-border-wrapper {
+    border: 1px solid #ccc;       /* Border only around iframe */
+    border-radius: 8px;
+    padding: 20px;                /* Padding OUTSIDE the iframe */
+    display: inline-block;        /* shrink-wrap to iframe */
+    margin: 30px 0;               /* spacing outside border */
+    
+    /* Scale down the iframe */
     transform: scale(0.2);
     transform-origin: top left;
-    width: 6000px;       /* 1200 / 0.2 */
-    height: 6000px;      /* 1200 / 0.2 */
+
+    /* Adjust width and height for the scaling */
+    width: 6000px;   /* 1200 / 0.2 */
+    height: 6000px;  /* 1200 / 0.2 */
     overflow: hidden;
-    margin: 50px;
 }
