@@ -86,7 +86,8 @@ footer {
 .iframe-wrapper {
     transform: scale(0.2);
     transform-origin: top left;
-    width: 6000px;
-    height: 4500px;
+    width: 6000px;       /* 1200 / 0.2 */
+    height: 6000px;      /* 1200 / 0.2 */
     overflow: hidden;
+    margin: 50px;
 }
