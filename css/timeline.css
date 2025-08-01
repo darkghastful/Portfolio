@@ -1,4 +1,4 @@
-/* timeline.css – Marker-free stacked vertical timeline */
+/* timeline.css – Marker-free stacked vertical timeline + University Data iframe */
 
 .timeline {
     position: relative;
@@ -59,4 +59,33 @@
     .timeline-line {
         left: 0.5rem;
     }
+}
+
+/* University Data iframe styling */
+.iframe-outer-wrapper {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.iframe-border-wrapper {
+    background-color: #222;
+    border: 1px solid var(--accent, #7b77d9);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    transform-origin: top left;
+    overflow: hidden;
+    width: calc(1250px * 0.6);
+    height: calc(1100px * 0.6);
+}
+
+.iframe-border-wrapper iframe {
+    width: 1250px;
+    height: 1100px;
+    border: none;
+    border-radius: 8px;
+    transform: scale(0.6);
+    transform-origin: top left;
+    display: block;
 }
