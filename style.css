@@ -1,119 +1,104 @@
 :root {
-    --jet: #333333ff;
-    --isabelline: #f5efedff;
-    --slate-blue: #6363c6ff;
-    --tropical-indigo: #8a84e2ff;
-    --pigment-green: #08a045ff;
-
-    --text-dark: var(--jet);
-    --text-light: var(--isabelline);
-    --primary: var(--slate-blue);
-    --accent: var(--tropical-indigo);
-    --success: var(--pigment-green);
-    --bg: var(--isabelline);
+	--bg: #181818;           /* Dark background */
+	--text: #f5efed;         /* Light text */
+	--slate-blue: #6363c6;   /* Accent blue */
+	--accent: var(--slate-blue);
+	--hover-accent: #7b77d9; /* Hover accent */
 }
 
+/* Global base styles */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--text-dark);
-    line-height: 1.6;
-    padding: 20px;
+	background-color: var(--bg);
+	color: var(--text);
+	line-height: 1.6;
+	padding: 20px;
 }
 
 header {
-    background-color: var(--primary);
-    color: var(--text-light);
-    padding: 20px;
-    text-align: center;
+	background-color: #121212;   /* Darker header */
+	color: var(--text);
+	padding: 20px;
+	text-align: center;
 }
 
 header h1 {
-    font-size: 2em;
-    margin-bottom: 5px;
+	font-size: 2em;
+	margin-bottom: 5px;
 }
 
 nav a {
-    color: var(--text-light);
-    margin: 0 10px;
-    text-decoration: none;
+	color: var(--text);
+	margin: 0 10px;
+	text-decoration: none;
 }
 
 nav a:hover {
-    text-decoration: underline;
+	color: var(--accent);
+	text-decoration: underline;
 }
 
 section {
-    margin: 40px 0;
+	margin: 40px 0;
 }
 
 h2 {
-    color: var(--primary);
-    margin-bottom: 10px;
+	color: var(--accent);
+	margin-bottom: 10px;
 }
 
 a {
-    color: var(--accent);
+	color: var(--accent);
+	text-decoration: none;
 }
 
 a:hover {
-    color: var(--success);
+	color: var(--hover-accent);
 }
 
 .project {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .iframe-outer-wrapper {
-    padding: 10px;
-    display: flex;
-    justify-content: center;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
 }
 
 .iframe-border-wrapper {
-    background-color: white;
-    border: 1px solid var(--primary);
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* padding: 20px; */
-    display: inline-block;
-
-    transform-origin: top left;
-    overflow: hidden;
-
-    /* Set width/height to scaled iframe size plus padding */
-    width: calc(1250px * 0.6); /* iframe width scaled + padding left+right */
-    height: calc(1100px * 0.6); /* iframe height scaled + padding top+bottom */
-
-    /* Apply scale to iframe, not wrapper */
-    transform: none;
+	background-color: #222;
+	border: 1px solid var(--accent);
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+	display: inline-block;
+	transform-origin: top left;
+	overflow: hidden;
+	width: calc(1250px * 0.6);
+	height: calc(1100px * 0.6);
+	transform: none;
 }
 
 .iframe-border-wrapper iframe {
-    width: 1250px;
-    height: 1100px;
-    border: none;
-    border-radius: 8px;
-
-    /* Scale iframe down */
-    transform: scale(0.6);
-    transform-origin: top left;
-    display: block;
+	width: 1250px;
+	height: 1100px;
+	border: none;
+	border-radius: 8px;
+	transform: scale(0.6);
+	transform-origin: top left;
+	display: block;
 }
-
 
 footer {
-    text-align: center;
-    color: var(--text-dark);
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #ccc;
+	text-align: center;
+	color: var(--text);
+	margin-top: 40px;
+	padding-top: 20px;
+	border-top: 1px solid #444;
 }
-
-

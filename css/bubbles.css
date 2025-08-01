@@ -1,0 +1,93 @@
+/* bubbles.css - Bubble styling and panel show/hide behavior */
+
+/* Bubble container */
+nav.bubbles {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.25rem 0;   /* 2.5rem → 1.25rem */
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+/* Bubble button/link as large rounded rectangles */
+.bubble {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  border-radius: 1.5rem;
+  background-color: #2f2f2f;
+  color: #f5efed;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  text-decoration: none;
+}
+
+/* Hover/focus states */
+.bubble:hover,
+.bubble:focus {
+  background-color: var(--slate-blue, #6363c6ff);
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+/* Active bubble */
+.bubble.active {
+  background-color: var(--slate-blue, #6363c6ff);
+  transform: scale(1.1);
+}
+
+/* Panel wrapper: show/hide, framed by default */
+.bubble-panel {
+  display: none;       /* hidden by default */
+  width: 100%;
+  max-width: none;
+  margin: 2rem auto 2.5rem;
+  padding: 1.5rem;
+  background-color: #2f2f2f;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: #f5efed;
+  text-align: left;
+  transform: scale(0.5);
+  transform-origin: top center;
+}
+
+
+/* Show panel when .show class is added */
+.bubble-panel.show {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Remove frame for About section only */
+#about.bubble-panel {
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 auto 1rem;
+}
+
+/* Larger titles in panels */
+.bubble-panel h2 {
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Larger paragraph text without centering */
+.bubble-panel p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: left;
+}

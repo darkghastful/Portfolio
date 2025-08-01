@@ -1,0 +1,94 @@
+/* styles.css */
+@import url("typography.css");  /* Fonts and text sizes */
+@import url("bubbles.css");     /* Bubble navigation */
+@import url("layouts.css");     /* Page layout and responsive rules */
+@import url("footer.css");      /* Footer styles */
+
+/* Global base styles */
+body {
+  margin: 0;
+  background-color: #181818;
+  color: #f5efed;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: #07a03f;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: #7b77d9;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Section content (hidden unless in bubble) */
+.section-content {
+  display: none;
+  padding: 2rem;                  /* uniform padding */
+  background-color: #292929;
+  border-radius: 14px;
+  width: calc(100% - 4rem);       /* full width minus horizontal margins */
+  margin: 2rem;                   /* equal spacing on all sides */
+  color: #f5efed;
+}
+
+.section-content.active {
+  display: block;
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 800px;
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+  background: white;
+  margin-top: 1.5rem;
+  overflow: auto;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+    padding: 2rem 2rem 3rem;
+    min-height: auto;
+  }
+
+  #about,
+  nav.bubbles {
+    width: 100%;
+    padding: 0;
+  }
+
+  #about {
+    margin-bottom: 2rem;
+    padding: 2rem 1.5rem;
+  }
+
+  nav.bubbles {
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    margin-bottom: 1.5rem;
+    padding-left: 0 !important;
+    align-items: center;
+  }
+
+  .bubble {
+    width: 110px;
+    height: 110px;
+    font-size: 1.15rem;
+  }
+}

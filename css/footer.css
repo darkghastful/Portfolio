@@ -1,0 +1,43 @@
+footer {
+  background-color: var(--color-jet, #2f2f2f);
+  color: var(--color-isabelline, #f5efed);
+  padding: 2rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+footer .footer-contact,
+footer .footer-copy {
+  display: block;
+  width: 100%;
+}
+
+footer .footer-contact p,
+footer .footer-copy p {
+  margin: 0;
+}
+
+footer a {
+  color: var(--color-pigment-green, #07a03f);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+footer a:hover,
+footer a:focus {
+  color: var(--color-tropical-indigo, #7b77d9);
+  text-decoration: underline;
+  outline: none;
+}
+
+footer .footer-contact a {
+  font-size: 1.3rem;
+}

@@ -1,0 +1,62 @@
+/* timeline.css – Marker-free stacked vertical timeline */
+
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    padding-left: 2rem;
+    margin: 0;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0.8rem;
+    width: 0.3rem;
+    background-color: #07a03f;
+    border-radius: 0.2rem;
+}
+
+.timeline-event {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Event content */
+.timeline-content {
+    background-color: #292929;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    color: #f5efed;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    line-height: 1.2;
+}
+
+.timeline-date {
+    color: #7b77d9;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+.timeline-role {
+    font-size: 1rem;
+    margin: 0 0 0.1rem 0;
+}
+.timeline-location {
+    font-size: 0.9rem;
+    margin: 0;
+    opacity: 0.85;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    .timeline {
+        padding-left: 1.5rem;
+        gap: 1rem;
+    }
+    .timeline-line {
+        left: 0.5rem;
+    }
+}

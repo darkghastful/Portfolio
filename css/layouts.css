@@ -1,0 +1,132 @@
+header { 
+  background-color: #2f2f2f;
+  color: #f5efed;
+  text-align: center;
+  padding: 3rem 1rem 2.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
+  user-select: none;
+  cursor: default;
+  letter-spacing: 0.07em;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  user-select: text;
+  text-decoration: underline dotted #7b77d9;
+  transition: color 0.3s ease;
+}
+header h1:hover,
+header h1:focus {
+  color: #7b77d9;
+  outline: none;
+}
+
+header p {
+  margin: 0.5rem 0 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+main {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center;    /* Center bubbles horizontally */
+  gap: 2rem;
+  padding: 2rem 3rem 3rem;
+  min-height: 520px;
+  background-color: #111111;
+}
+
+#about {
+  width: 100%;        /* fill full width of its parent */
+  max-width: none;    /* remove the 900px cap */
+  margin: 2rem 0;     /* 2rem vertical, no horizontal centering */
+  padding: 0;         /* let .section-content handle padding */
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+    padding: 2rem 2rem 3rem;
+    min-height: auto;
+  }
+
+  #about,
+  nav.bubbles {
+    width: 100%;
+    padding: 0;
+  }
+
+  #about {
+    margin-bottom: 2rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Two-column About container */
+.about-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Base panel styling (used for all non-About sections) */
+.panel {
+  background-color: #292929;
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Apply framing to bubble-panel sections via .panel class */
+.bubble-panel.panel {
+  width: calc(100% - 2rem);  /* fill full width minus horizontal margins */
+  margin: 1rem;               /* uniform spacing around panels */
+  padding: 1.5rem;
+  box-sizing: border-box;     /* include padding in width */
+}
+
+/* Interior panels in the About section */
+.about-container .panel {
+  flex: 1 1 300px;
+  margin: 0;
+  width: auto;
+}
+
+/* Timeline styling */
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-item {
+  margin-bottom: 1.5rem;
+}
+
+.timeline-date {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-role {
+  display: block;
+}
+
+/* Responsive: stack panels on small screens */
+@media (max-width: 700px) {
+  .about-container {
+    flex-direction: column;
+  }
+}
+
+/* Override: make all bubble panels full-width with equal vertical margins and matching padding */
+
