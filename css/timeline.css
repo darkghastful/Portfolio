@@ -1,4 +1,4 @@
-/* timeline.css – Marker-free stacked vertical timeline + University Data iframe */
+/* timeline.css – Marker-free stacked vertical timeline + iframe + UI Updates */
 
 .timeline {
     position: relative;
@@ -29,7 +29,7 @@
 .timeline-content {
     background-color: #292929;
     padding: 0.6rem 1rem;
-    border-radius: 0.5rem;
+    border-radius: 1.5rem; /* match bubble radius */
     color: #f5efed;
     box-shadow: 0 2px 5px rgba(0,0,0,0.4);
     line-height: 1.2;

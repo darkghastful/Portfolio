@@ -80,7 +80,7 @@ main {
 /* Base panel styling (used for all non-About sections) */
 .panel {
   background-color: #292929;
-  border-radius: 14px;
+  border-radius: 1.5rem;
   padding: 1.5rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
@@ -98,6 +98,7 @@ main {
   flex: 1 1 300px;
   margin: 0;
   width: auto;
+  border-radius: 1.5rem;
 }
 
 /* Timeline styling */
