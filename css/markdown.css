@@ -1,0 +1,43 @@
+/* GitHub-like code styling (dark) */
+.markdown-body pre {
+  background: #181818;                   /* GitHub dark */
+  color: #c9d1d9;
+  border: 1px solid #181818;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  overflow: auto;                        /* horizontal scroll if needed */
+  line-height: 1.45;
+  font-size: 0.9rem;
+  tab-size: 4;
+  -webkit-overflow-scrolling: touch;
+}
+
+.markdown-body pre code {
+  display: block;
+  white-space: pre;
+  background: transparent;               /* don't double-tint */
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: inherit;                        /* use container color if no highlighter */
+}
+
+.markdown-body code,
+.markdown-body pre code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco,
+               Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Inline code (backticks) */
+.markdown-body :not(pre) > code {
+  background: rgba(110,118,129,0.4);
+  color: #c9d1d9;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: .2em .4em;
+  white-space: break-spaces;
+}
+
+/* Optional: make fenced code blocks edge-to-edge nicely on mobile */
+.markdown-body pre { margin: 0.75rem -0.25rem; }
+@media (min-width: 600px) { .markdown-body pre { margin: 0.75rem 0; } }

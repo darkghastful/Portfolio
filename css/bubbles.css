@@ -2,48 +2,88 @@
 
 /* Bubble container */
 nav.bubbles {
-  display: flex;
   justify-content: center;
-  gap: 2rem;
-  margin: 1.25rem 0;   /* 2.5rem → 1.25rem */
+  font-size: clamp(0.9rem, 2.2vw, 1.5rem);
+  flex-wrap: nowrap;
+  gap: 1.33em;
+  margin: 0;
   padding: 0;
-  flex-wrap: wrap;
+
+  display: flex;
 }
+
+
 
 /* Bubble button/link as large rounded rectangles */
 .bubble {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 3rem;
-  border-radius: 1.5rem;
-  background-color: #2f2f2f;
-  color: #f5efed;
+
+  /* inherit row scaling; 1em follows nav.bubbles font-size */
   font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font-size: 1em;          /* inherit from nav; was 1.5rem */
+  line-height: 1;          /* tight line box so padding is precise */
+
+  /* geometry follows the text metrics (no drift) */
+  padding-block: 0.75lh;   /* your current values, now fluid with text */
+  padding-inline: 1.5lh;
+  color: #f5efed;
   text-align: center;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: background-color 0.2s, color 0.2s, transform 0.2s;
   text-decoration: none;
-  transform-origin: center center;
+  cursor: pointer;
+
+  transition: background-color .2s, color .2s, transform .2s; border-color: .2s;
+  transform-origin: center;
+
+  /* prevent distortion */
+  white-space: nowrap; 
+  flex: 0 0 auto; 
+  min-width: max-content;
+  box-sizing: border-box;
 }
 
-/* Hover/focus states */
 .bubble:hover,
 .bubble:focus,
-.bubble:active {
-  background-color: var(--slate-blue, #6363c6ff);
-  transform: scale(1.08);
-  text-decoration: none;
-  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+.bubble.active {
+    color: #ffffff !important;
+    transform: scale(1.08);
+    text-decoration: none;
+    box-shadow: 0 0 12px rgba(0,0,0,0.6);
 }
 
-/* Active bubble */
 .bubble.active {
-  background-color: var(--slate-blue, #6363c6ff);
   transform: scale(1.1);
+}
+
+.prim-bubble {
+  background-color: #2f2f2f;
+  border: 2px solid transparent;
+}
+
+.prim-bubble:hover,
+.prim-bubble:focus,
+.prim-bubble:active {
+  background-color: var(--slate-blue, #6363c6ff);
+}
+
+.prim-bubble.active {
+  background-color: var(--slate-blue, #6363c6ff);
+}
+
+.sub-bubble {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.18);
+}
+
+.sub-bubble:hover,
+.sub-bubble:focus,
+.sub-bubble:active {
+  border: 2px solid #6363c6ff;
+}
+
+.sub-bubble.active {
+  border: 2px solid #6363c6ff;
 }
 
 /* Panel wrapper: show/hide, framed by default */
@@ -51,10 +91,9 @@ nav.bubbles {
   display: none;       /* hidden by default */
   width: 100%;
   max-width: none;
-  margin: 2rem auto 2.5rem;
-  padding: 1.5rem;
+  margin: 0 ;
+  padding: 3rem;
   background-color: #2f2f2f;
-  border-radius: 1.5rem;
   box-sizing: border-box;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   opacity: 0;
@@ -77,9 +116,8 @@ nav.bubbles {
 #about.bubble-panel {
   background: none;
   box-shadow: none;
-  border-radius: 1.5rem;
   padding: 0;
-  margin: 0 auto 1rem;
+  margin: 0 ;
 }
 
 /* Larger titles in panels */
@@ -96,9 +134,40 @@ nav.bubbles {
   text-align: left;
 }
 
-/* Keep bubble text white on hover and active */
-.bubble:hover,
-.bubble:focus,
-.bubble.active {
-    color: #ffffff !important;
+
+
+
+
+
+/* Hover/focus: subtle hint only
+.sub-bubble:hover,
+.sub-bubble:focus-visible {
+  border-color: rgba(99,99,198,0.7);
+  transform: scale(1.08);
+  box-shadow: 0 0 8px rgba(99,99,198,0.28); 
+  text-decoration: none;
+  outline: none;
+}
+
+.sub-bubble[aria-selected="true"] {
+  background: transparent;
+  border-color: #6363c6;               
+  box-shadow: 0 0 0 3px rgba(99,99,198,0.28); 
+  color: rgba(99,99,198,0.7);
+  text-decoration: none;
+} */
+
+/* Sub-panels match your panel fade/scale behavior */
+.subpanel {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+
+.subpanel.show {
+  display: block;
+  opacity: 1;
+  transform: none;
 }

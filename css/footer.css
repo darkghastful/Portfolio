@@ -3,8 +3,7 @@ footer {
   color: var(--color-isabelline, #f5efed);
   padding: 2rem 2rem;
   font-size: 1.2rem; /* ensure proportionate | */
-    font-weight: 600;
- 1.1rem;
+  font-weight: 600;
   font-weight: 600;
   display: flex;
   flex-direction: column;
@@ -42,6 +41,5 @@ footer a:focus {
 
 footer .footer-contact a {
   font-size: 1.2rem; /* ensure proportionate | */
-    font-weight: 600;
- 1.3rem;
+  font-weight: 600;
 }

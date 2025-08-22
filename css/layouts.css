@@ -2,7 +2,7 @@ header {
   background-color: #2f2f2f;
   color: #f5efed;
   text-align: center;
-  padding: 3rem 1rem 2.5rem;
+  padding: 3rem;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.85);
   user-select: none;
   cursor: default;
@@ -25,7 +25,7 @@ header h1:focus {
 }
 
 header p {
-  margin: 0.5rem 0 1.5rem;
+  margin: 0;
   font-size: 1.2rem;
   font-weight: 400;
   font-style: italic;
@@ -36,10 +36,10 @@ main {
   display: flex;
   flex-direction: column; /* Stack content vertically */
   align-items: center;    /* Center bubbles horizontally */
-  gap: 2rem;
-  padding: 2rem 3rem 3rem;
+  padding: 3rem;
   min-height: 520px;
   background-color: #111111;
+  gap: 3rem;
 }
 
 #about {
@@ -53,14 +53,8 @@ main {
 @media (max-width: 900px) {
   main {
     flex-direction: column;
-    padding: 2rem 2rem 3rem;
+    padding: 2rem 2rem 2rem;
     min-height: auto;
-  }
-
-  #about,
-  nav.bubbles {
-    width: 100%;
-    padding: 0;
   }
 
   #about {
@@ -75,30 +69,22 @@ main {
   flex-direction: row;
   gap: 2rem;
   flex-wrap: wrap;
+  padding: 0rem;
 }
 
 /* Base panel styling (used for all non-About sections) */
 .panel {
   background-color: #292929;
-  border-radius: 1.5rem;
-  padding: 1.5rem;
+  padding: 3rem;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
 }
 
-/* Apply framing to bubble-panel sections via .panel class */
-.bubble-panel.panel {
-  width: calc(100% - 2rem);  /* fill full width minus horizontal margins */
-  margin: 1rem;               /* uniform spacing around panels */
-  padding: 1.5rem;
-  box-sizing: border-box;     /* include padding in width */
-}
 
 /* Interior panels in the About section */
 .about-container .panel {
   flex: 1 1 300px;
   margin: 0;
   width: auto;
-  border-radius: 1.5rem;
 }
 
 /* Timeline styling */
@@ -129,5 +115,30 @@ main {
   }
 }
 
-/* Override: make all bubble panels full-width with equal vertical margins and matching padding */
+/* University Data iframe styling */
+.iframe-outer-wrapper {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.iframe-border-wrapper {
+    background-color: #222;
+    border: 1px solid var(--accent, #7b77d9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    transform-origin: top left;
+    overflow: hidden;
+    width: calc(1250px * 0.6);
+    height: calc(1100px * 0.6);
+}
+
+.iframe-border-wrapper iframe {
+    width: 1250px;
+    height: 1100px;
+    border: none;
+    transform: scale(0.6);
+    transform-origin: top left;
+    display: block;
+}
 

@@ -20,11 +20,6 @@ header p {
   font-size: 1.15rem;
 }
 
-.bubble {
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
 footer {
   font-size: 1.1rem;
   font-weight: 600;
@@ -34,8 +29,3 @@ footer a {
   font-weight: 700;
 }
 
-@media (max-width: 900px) {
-  .bubble {
-    font-size: 1.15rem;
-  }
-}
