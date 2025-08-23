@@ -86,8 +86,7 @@ nav.bubbles {
   border: 2px solid #6363c6ff;
 }
 
-/* Panel wrapper: show/hide, framed by default */
-.bubble-panel {
+.panel-frame {
   display: none;       /* hidden by default */
   width: 100%;
   max-width: none;
@@ -100,6 +99,25 @@ nav.bubbles {
   transition: opacity 0.3s ease;
   color: #f5efed;
   text-align: left;
+  transform: scale(0.5);
+  transform-origin: top center;
+}
+
+
+/* Panel wrapper: show/hide, framed by default */
+.bubble-panel {
+  display: none;       /* hidden by default */
+  /* width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 3rem;
+  background-color: #2f2f2f;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: #f5efed;
+  text-align: left; */
   transform: scale(0.5);
   transform-origin: top center;
 }
@@ -135,6 +153,21 @@ nav.bubbles {
 }
 
 
+/* Sub-panels match your panel fade/scale behavior */
+.subpanel {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.subpanel.show {
+  display: block;
+  opacity: 1;
+  transform: none;
+}
+
+
 
 
 
@@ -157,17 +190,3 @@ nav.bubbles {
   text-decoration: none;
 } */
 
-/* Sub-panels match your panel fade/scale behavior */
-.subpanel {
-  display: none;
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-
-.subpanel.show {
-  display: block;
-  opacity: 1;
-  transform: none;
-}

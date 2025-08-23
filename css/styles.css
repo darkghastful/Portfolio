@@ -6,17 +6,13 @@
 @import url("markdown.css");
 
 :root { --ui-radius: clamp(0.9rem, 2.2vw, 1.5rem); }
-.about-container,
 .timeline-content,
-.panel,
-.iframe-border-wrapper,
-.bubble-panel,
-.subpanel {
+.frame,
+.iframe-border-wrapper {
   border-radius: var(--ui-radius);
 }
 
 :root { --bubble-radius: 1lh; }
-nav.bubbles,
 .bubble {
   border-radius: var(--bubble-radius);
 }

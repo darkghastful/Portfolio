@@ -41,3 +41,27 @@
 /* Optional: make fenced code blocks edge-to-edge nicely on mobile */
 .markdown-body pre { margin: 0.75rem -0.25rem; }
 @media (min-width: 600px) { .markdown-body pre { margin: 0.75rem 0; } }
+
+
+/* Put at the end of your CSS */
+.markdown-body img,
+.markdown-body svg,
+.markdown-body video,
+.markdown-body canvas {
+  max-width: 100%;
+  height: auto;      /* keeps aspect ratio */
+  display: block;    /* removes inline gap & centers better with margin auto */
+}
+
+/* If the MD includes width/height attributes, override them */
+.markdown-body img[width],
+.markdown-body img[height] {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+/* Optional: center standalone images and keep them inside the panel */
+.markdown-body img {
+  margin: 0.5rem auto;
+}
