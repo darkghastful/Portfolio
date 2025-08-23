@@ -66,16 +66,15 @@ a:focus {
 
 
 .pdf-exact {
-  display: block;   /* shrink-wrap to the canvases' exact size */
-  background: transparent;
+  display: block;
   width: fit-content;
   max-width: 100%;
-  margin-inline: auto;
+  margin: 0 auto;       /* center horizontally */
   background: transparent;
   padding: 0;
-  margin: 0;
   border: 0;
 }
+
 .pdf-exact canvas {
   display: block;          /* no inline gaps between canvases */
   margin: 2em 0em 0em 0em;
