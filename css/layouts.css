@@ -63,30 +63,22 @@ main {
   }
 }
 
-/* .bubble-panel {
-  display: none;    
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 3rem;
-  background-color: #2f2f2f;
-  box-sizing: border-box;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  color: #f5efed;
-  text-align: left;
-  transform: scale(0.5);
-  transform-origin: top center;
-} */
+
 
 /* Multi-column About container */
 .panel-container {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  gap: 3rem;
   flex-wrap: wrap;
   padding: 0rem;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: row;
 }
 
 /* Base panel styling (used for all non-About sections) */
@@ -100,8 +92,7 @@ main {
 /* Interior panels in the About section */
 .panel-container .frame {
   flex: 1 1 300px;
-  margin: 0;
-  width: auto;
+  width: 100%;
 }
 
 /* Timeline styling */
@@ -158,4 +149,3 @@ main {
     transform-origin: top left;
     display: block;
 }
-

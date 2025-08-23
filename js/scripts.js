@@ -1,105 +1,97 @@
-// scripts.js
-// Toggle visibility of bubble panels with fade animation, default to About panel open, and keep the bubble visible when opened
-// Removed click handler for header h1 to keep it non-clickable
-
 document.addEventListener("DOMContentLoaded", () => {
-  const bubbles = document.querySelectorAll(".prim-bubble");
-  // Only generic bubble panels
-  const panels = document.querySelectorAll(".bubble-panel");
+  const HIDE_DELAY = 300; // match your CSS transition
 
-  function hideAll() {
-    panels.forEach(panel => {
-      panel.classList.remove("show");
-      panel.classList.remove("active");
-      setTimeout(() => {
-        panel.hidden = true;
-      }, 300); // Delay hiding to allow animation
-    });
-    bubbles.forEach(b => b.classList.remove("active"));
-  }
+  document.querySelectorAll("nav.bubbles").forEach(initNav);
 
-  function showPanel(id) {
-    const panel = document.getElementById(id);
-    const bubble = document.querySelector(`.prim-bubble[data-target="${id}"]`);
-    if (panel && bubble) {
-      panel.hidden = false;
-      // Force reflow to restart animation
-      void panel.offsetWidth;
-      panel.classList.add("active", "show");
-      bubble.classList.add("active");
+  function initNav(nav) {
+    const rootSection = nav.closest("section") || document;
+    const links = Array.from(nav.querySelectorAll("[data-target]")).filter(a => a.dataset.target);
+    if (!links.length) return;
+
+    const panels = links
+      .map(a => findPanel(rootSection, a.dataset.target))
+      .filter(Boolean);
+
+    let hideTimer = null;
+
+    function cssEscape(id) {
+      return (window.CSS && CSS.escape) ? CSS.escape(id) : id.replace(/[^a-zA-Z0-9\-_]/g, "\\$&");
     }
-  }
 
-  // Initialize: hide all then show About by default
-  hideAll();
-  showPanel("about");
+    function findPanel(scope, id) {
+      const sel = `#${cssEscape(id)}`;
+      // If scoped to a section, do not leak to document-level
+      if (nav.closest("section")) return scope.querySelector(sel);
+      return document.querySelector(sel);
+    }
 
-  bubbles.forEach(bubble => {
-    bubble.addEventListener("click", e => {
-      e.preventDefault();
-      const targetId = bubble.dataset.target;
-      hideAll();
-      setTimeout(() => showPanel(targetId), 300); // Delay to allow previous panel to fade out
-    });
-
-    bubble.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        bubble.click();
+    function hideAll({ instant = false } = {}) {
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; }
+      panels.forEach(p => {
+        p.classList.remove("active", "show");
+        if (instant) p.hidden = true;
+      });
+      if (!instant) {
+        hideTimer = setTimeout(() => {
+          panels.forEach(p => (p.hidden = true));
+          hideTimer = null;
+        }, HIDE_DELAY);
       }
+      links.forEach(a => a.classList.remove("active"));
+    }
+
+    function showPanel(id) {
+      const panel = findPanel(rootSection, id);
+      const link  = links.find(a => a.dataset.target === id);
+      if (!panel || !link) return;
+
+      if (hideTimer) { clearTimeout(hideTimer); hideTimer = null; } // don't re-hide what we're showing
+      panel.hidden = false;
+      void panel.offsetWidth; // restart CSS transition
+      panel.classList.add("active", "show");
+      link.classList.add("active");
+    }
+
+    // INIT: instant hide, then show the FIRST button's panel
+    hideAll({ instant: true });
+    showPanel(links[0].dataset.target);
+
+    // Clicks: fade out then show target
+    nav.addEventListener("click", (e) => {
+      const a = e.target.closest("[data-target]");
+      if (!a || !nav.contains(a)) return;
+      e.preventDefault();
+      hideAll();
+      setTimeout(() => showPanel(a.dataset.target), HIDE_DELAY);
     });
-  });
-});
 
+    // Keyboard (Enter/Space)
+    nav.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const a = e.target.closest("[data-target]");
+      if (!a || !nav.contains(a)) return;
+      e.preventDefault();
+      a.click();
+    });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const projectPanel = document.getElementById("projects");
-  if (!projectPanel) return;
-
-  const subBubbles = [...projectPanel.querySelectorAll(".sub-bubble")];
-  const subPanels  = [...projectPanel.querySelectorAll(".subpanel")];
-
-  const getTargetId = (el) =>
-    el?.dataset?.subtarget ||
-    el?.getAttribute("aria-controls") ||
-    (el?.getAttribute("href") || "").replace(/^#/, "") ||
-    null;
-
-  function hideAllSub() {
-    subPanels.forEach(p => { p.classList.remove("show"); p.hidden = true; });
-    subBubbles.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
-  }
-
-  function showSub(targetId, srcBtn) {
-    if (!targetId) return;
-    const panel = projectPanel.querySelector(`#${CSS.escape(targetId)}`);
-    if (!panel) return;
-    panel.hidden = false;          // critical: override the hidden attribute
-    void panel.offsetWidth;        // restart transition
-    panel.classList.add("show");
-    if (srcBtn) {
-      srcBtn.classList.add("active");
-      srcBtn.setAttribute("aria-selected", "true");
-      srcBtn.focus({ preventScroll: true });
+    // If this nav sits inside a section that starts hidden,
+    // auto-show its first panel when the section becomes visible.
+    const containerSection = nav.closest("section");
+    if (containerSection) {
+      const mo = new MutationObserver((muts) => {
+        for (const m of muts) {
+          if (m.attributeName === "hidden" && containerSection.hidden === false) {
+            if (!panels.some(p => !p.hidden)) {
+              showPanel(links[0].dataset.target);
+            }
+          }
+        }
+      });
+      mo.observe(containerSection, { attributes: true, attributeFilter: ["hidden"] });
     }
   }
-
-  hideAllSub();
-  const firstBtn = subBubbles[0];
-  if (firstBtn) showSub(getTargetId(firstBtn), firstBtn);
-
-  subBubbles.forEach(btn => {
-    btn.addEventListener("click", e => {
-      e.preventDefault();
-      const id = getTargetId(btn);
-      if (!id || btn.getAttribute("aria-selected") === "true") return;
-      hideAllSub(); showSub(id, btn);
-    });
-    btn.addEventListener("keydown", e => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); btn.click(); }
-    });
-  });
 });
+
 
 
 // === Generic GitHub RAW Markdown autoloader ===

@@ -86,40 +86,16 @@ nav.bubbles {
   border: 2px solid #6363c6ff;
 }
 
-.panel-frame {
-  display: none;       /* hidden by default */
-  width: 100%;
-  max-width: none;
-  margin: 0 ;
-  padding: 3rem;
-  background-color: #2f2f2f;
-  box-sizing: border-box;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  color: #f5efed;
-  text-align: left;
-  transform: scale(0.5);
-  transform-origin: top center;
-}
-
 
 /* Panel wrapper: show/hide, framed by default */
 .bubble-panel {
   display: none;       /* hidden by default */
-  /* width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 3rem;
-  background-color: #2f2f2f;
-  box-sizing: border-box;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  color: #f5efed;
-  text-align: left; */
   transform: scale(0.5);
   transform-origin: top center;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  /* gap: 3rem; */
 }
 
 
@@ -128,14 +104,6 @@ nav.bubbles {
   display: block;
   opacity: 1;
   transform: scale(1);
-}
-
-/* Remove frame for About section only */
-#about.bubble-panel {
-  background: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0 ;
 }
 
 /* Larger titles in panels */
@@ -164,7 +132,7 @@ nav.bubbles {
 .subpanel.show {
   display: block;
   opacity: 1;
-  transform: none;
+  transform: scale(1);
 }
 
 
