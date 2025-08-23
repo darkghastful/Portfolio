@@ -3,9 +3,8 @@
 /* Bubble container */
 nav.bubbles {
   justify-content: center;
-  font-size: clamp(0.9rem, 2.2vw, 1.5rem);
   flex-wrap: nowrap;
-  gap: 1.33em;
+  gap: 1.5em;
   margin: 0;
   padding: 0;
 
@@ -22,7 +21,7 @@ nav.bubbles {
 
   /* inherit row scaling; 1em follows nav.bubbles font-size */
   font-weight: 700;
-  font-size: 1em;          /* inherit from nav; was 1.5rem */
+  font-size: clamp(0.9rem, 2.2vw, 1.5rem);
   line-height: 1;          /* tight line box so padding is precise */
 
   /* geometry follows the text metrics (no drift) */

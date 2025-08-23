@@ -68,16 +68,16 @@ main {
 /* Multi-column About container */
 .panel-container {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   flex-wrap: wrap;
   padding: 0rem;
 }
 
-.vertical {
+.panel-container.vertical {
   flex-direction: column;
 }
 
-.horizontal {
+.panel-container.horizontal {
   flex-direction: row;
 }
 
@@ -115,6 +115,31 @@ main {
 .timeline-role {
   display: block;
 }
+
+
+/* Publication and resume head */
+.frame-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: nowrap;      
+}
+
+.frame-head h2 {
+  margin: 0;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;      
+  /* white-space: normal;   */
+}
+
+.frame-head .bubble {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+
 
 /* Responsive: stack panels on small screens */
 @media (max-width: 700px) {

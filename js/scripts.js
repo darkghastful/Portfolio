@@ -59,6 +59,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clicks: fade out then show target
     nav.addEventListener("click", (e) => {
       const a = e.target.closest("[data-target]");
+      const link = e.target.closest('a');
+
+      if (!link) return;
+      if (link.hasAttribute('download')) {
+        return; // no preventDefault, no panel toggling
+      }
+
       if (!a || !nav.contains(a)) return;
       e.preventDefault();
       hideAll();
@@ -213,4 +220,55 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.addEventListener("DOMContentLoaded", initMdIncludes);
+})();
+
+
+
+(function initExactPDF() {
+  const url = "https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js";
+  const worker = "https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
+
+  function start() {
+    // Render every .pdf-exact holder on the page
+    document.querySelectorAll(".pdf-exact").forEach(async (holder) => {
+      const pdfUrl = holder.dataset.pdf;
+      if (!pdfUrl) return;
+
+      const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+
+      // Render all pages; set to 1 if you only want the first page
+      for (let n = 1; n <= pdf.numPages; n++) {
+        const page = await pdf.getPage(n);
+
+        // Scale 1 == actual PDF CSS pixel size; upscale for HiDPI but keep CSS size exact
+        const viewport = page.getViewport({ scale: 1 });
+        const ratio = window.devicePixelRatio || 1;
+
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = Math.floor(viewport.width * ratio);
+        canvas.height = Math.floor(viewport.height * ratio);
+        canvas.style.width = `${viewport.width}px`;
+        canvas.style.height = `${viewport.height}px`;
+
+        holder.appendChild(canvas);
+
+        await page.render({
+          canvasContext: ctx,
+          viewport,
+          transform: [ratio, 0, 0, ratio, 0, 0], // HiDPI crispness without changing CSS size
+        }).promise;
+      }
+    });
+  }
+
+  // Lazy-load pdf.js then start
+  const s = document.createElement("script");
+  s.src = url;
+  s.onload = () => {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = worker;
+    start();
+  };
+  document.head.appendChild(s);
 })();

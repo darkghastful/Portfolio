@@ -21,9 +21,9 @@
     <main>
         <nav class="bubbles" aria-label="Portfolio Sections">
             <a href="#" class="bubble prim-bubble active" data-target="about" tabindex="0">About</a>
+            <a href="#" class="bubble prim-bubble" data-target="publication" tabindex="0">Publication</a>
             <a href="#" class="bubble prim-bubble" data-target="projects" tabindex="0">Projects</a>
-            <!-- <a href="#" class="bubble prim-bubble" data-target="placeholder1" tabindex="0">Bubble 1</a>
-            <a href="#" class="bubble prim-bubble" data-target="placeholder2" tabindex="0">Bubble 2</a> -->
+            <!-- <a href="#" class="bubble prim-bubble" data-target="placeholder2" tabindex="0">Bubble 2</a> -->
             <a href="#" class="bubble prim-bubble" data-target="resume" tabindex="0">Resume</a>
         </nav>
 
@@ -73,6 +73,23 @@
             </div>
         </section>
 
+        <section id="publication" class="bubble-panel" aria-labelledby="publication-title" hidden>
+            <div class="panel-container horizontal">
+                <div class="frame">
+                    <div class="frame-head">
+                        <h2 id="publication-title">
+                            The nasal microbiome in early infancy is 
+                            primarily shaped by the maternal nasal microbiome
+                        </h2>
+                        <a class="bubble sub-bubble"
+                        href="attachments/Early_life_nasal_microbiome_Quinn_2025.pdf"
+                        download="Early_life_nasal_microbiome_Quinn_2025.pdf">Download</a>
+                    </div>
+                    <p>Include details about study abstract, and graphical abstract.</p>
+                </div>
+            </div>
+        </section>
+
 
         <section id="projects" class="bubble-panel" aria-labelledby="projects-title" hidden>
             <div class="panel-container vertical">
@@ -87,7 +104,6 @@
                     <article class="md-include markdown-body"
                     data-md="darkghastful/SNPshiftStop@main:README.md"
                     aria-busy="true">
-                        Loading…
                     </article>
                 </div>
 
@@ -95,7 +111,6 @@
                     <article class="md-include markdown-body"
                     data-md="darkghastful/NHL-Rink@main:README.md"
                     aria-busy="true">
-                        Loading…
                     </article>
                 </div>
 
@@ -144,19 +159,24 @@
        
         </section>
 
-        <!-- <section id="placeholder1" class="bubble-panel" aria-labelledby="placeholder1-title" hidden>
-            <h2 id="placeholder1-title">Placeholder 1</h2>
-            <p>This is placeholder content for bubble 1.</p>
-        </section>
-
-        <section id="placeholder2" class="bubble-panel" aria-labelledby="placeholder2-title" hidden>
+        <!-- <section id="placeholder2" class="bubble-panel" aria-labelledby="placeholder2-title" hidden>
             <h2 id="placeholder2-title">Placeholder 2</h2>
             <p>This is placeholder content for bubble 2.</p>
         </section> -->
 
+        
         <section id="resume" class="bubble-panel" aria-labelledby="resume-title" hidden>
-            <h2 id="resume-title">Resume</h2>
-            <iframe class="pdf-viewer" src="attachments/resume.pdf#toolbar=0" title="Resume PDF" loading="lazy"></iframe>
+            <div class="panel-container horizontal">
+                <div class="frame">
+                    <div class="frame-head">
+                        <h2 id="resume-title">Resume</h2>
+                        <a class="bubble sub-bubble"
+                        href="attachments/Bailey_Quinn_Resume_2025.pdf"
+                        download="Bailey_Quinn_Resume_2025.pdf">Download</a>
+                    </div>
+                    <div id="resumeViewer" class="pdf-exact" data-pdf="attachments/Bailey_Quinn_Resume_2025.pdf"></div>
+                </div>
+            </div>
         </section>
     </main>
 
