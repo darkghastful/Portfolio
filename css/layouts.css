@@ -11,7 +11,7 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 3.2rem;
+  font-size: 4em;
   font-weight: 800;
   cursor: pointer;
   user-select: text;
@@ -26,7 +26,7 @@ header h1:focus {
 
 header p {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.5em;
   font-weight: 400;
   font-style: italic;
   letter-spacing: 0.02em;
@@ -57,10 +57,10 @@ main {
     min-height: auto;
   }
 
-  #about {
+  /* #about {
     margin-bottom: 2rem;
     padding: 2rem 1.5rem;
-  }
+  } */
 }
 
 
@@ -95,26 +95,7 @@ main {
   width: 100%;
 }
 
-/* Timeline styling */
-.timeline {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
 
-.timeline-item {
-  margin-bottom: 1.5rem;
-}
-
-.timeline-date {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 0.3rem;
-}
-
-.timeline-role {
-  display: block;
-}
 
 
 /* Publication and resume head */

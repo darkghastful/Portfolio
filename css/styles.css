@@ -9,6 +9,7 @@
 .timeline-content,
 .frame,
 /* .pdf-viewer, */
+.pdf-exact,
 .iframe-border-wrapper {
   border-radius: var(--ui-radius);
 }

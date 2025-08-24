@@ -1,11 +1,16 @@
 /* timeline.css – Marker-free stacked vertical timeline + iframe + UI Updates */
 
+.timeline-item {
+  margin-bottom: 1.5rem;
+}
+
 .timeline {
+    list-style: none;
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    padding-left: 2rem;
+    padding-left: 2.5rem;
     margin: 0;
 }
 
@@ -27,7 +32,8 @@
 
 /* Event content */
 .timeline-content {
-    background-color: #292929;
+    background-color: #2f2f2f;
+    border: 3px solid #181818;
     padding: 0.6rem 1rem;
     color: #f5efed;
     box-shadow: 0 2px 5px rgba(0,0,0,0.4);
@@ -35,18 +41,24 @@
 }
 
 .timeline-date {
+    display: block;
     color: #7b77d9;
+    font-size: 1.15em;
     font-weight: 700;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.5em;
 }
-.timeline-role {
-    font-size: 1rem;
-    margin: 0 0 0.1rem 0;
-}
+
 .timeline-location {
-    font-size: 0.9rem;
-    margin: 0;
+    font-size: 1em;
+    margin-bottom: 0.5em;
     opacity: 0.85;
+}
+
+.timeline-role {
+    display: block;
+    font-size: 1.25em;
+    font-weight: 700;
+    /* margin: 0 0 0.1rem 0; */
 }
 
 /* Responsive */
@@ -59,4 +71,5 @@
         left: 0.5rem;
     }
 }
+
 
