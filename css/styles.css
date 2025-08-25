@@ -65,8 +65,7 @@ a:focus {
   display: block;
 }
 
-
-.pdf-exact {
+.center-content {
   display: block;
   width: fit-content;
   max-width: 100%;
