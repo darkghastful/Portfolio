@@ -75,7 +75,7 @@ a:focus {
   border: 0;
 }
 
-.pdf-exact canvas {
+.center-content canvas {
   display: block;          /* no inline gaps between canvases */
   margin: 2em 0em 0em 0em;
 }
