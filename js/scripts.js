@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const HIDE_DELAY = 300; // match your CSS transition
+  const HIDE_DELAY = 300; 
 
   document.querySelectorAll("nav.bubbles").forEach(initNav);
 
@@ -99,13 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
-
-// === Generic GitHub RAW Markdown autoloader ===
-// Usage: <article class="md-include" data-md="owner/repo@ref:path.md"></article>
-//        OR data-owner, data-repo, data-branch, data-file attributes.
-// It renders once when the element (or its parent subpanel) becomes visible.
-
 (function () {
   const ABSOLUTE_RE = /^(https?:)?\/|^data:|^#/i;
 
@@ -114,7 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const spec = el.dataset.md;
     let owner, repo, ref, file;
     if (spec) {
-      // owner/repo@ref:path
       const at = spec.indexOf("@");
       const colon = spec.indexOf(":");
       const slash = spec.indexOf("/");
@@ -126,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
         ref  = refPart;
         file = filePart;
       } else {
-        // owner/repo:path  (assume main)
         const c = spec.indexOf(":");
         const repoPart = spec.slice(0, c);
         const filePart = spec.slice(c + 1);
